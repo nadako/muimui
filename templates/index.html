@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 {% block body %}
-<h1>Collections</h1>
+<h1>root/</h1>
 <ul>
-    {% for collection in collections|sort %}
+    {% for db in dbs|sort %}
     <li>
-        <a href="{{ url_for('.collection', name=collection) }}">{{ collection }}</a>
+        <a href="{{ url_for('.database', db_name=db) }}">{{ db }}</a>
     </li>
     {% endfor %}
 </ul>

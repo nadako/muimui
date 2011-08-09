@@ -1,17 +1,17 @@
 {% extends 'layout.html' %}
 {% block body %}
-<h1>{{ collection }}</h1>
+<h1>
+    <a href="{{ url_for('.index') }}">root</a>/<a href="{{ url_for('.database', db_name=db_name) }}">{{ db_name }}</a>/<a href="{{ url_for('.collection', db_name=db_name, coll_name=coll_name) }}">{{ coll_name }}</a>/{{ id }}
+</h1>
 
-<p><a href="{{ url_for('.collection', name=collection) }}">index</a></p>
+<h2>Delete?</h2>
 
-<form action="" method="post">
-    Delete?
-    <div>
-        <pre>{{ value }}</pre>
-    </div>
-    <div>
+<pre>{{ value }}</pre>
+
+<div>
+    <form action="" method="post">
         <input type="submit" value="Yes" name="delete">
         <input type="submit" value="No">
-    </div>
-</form>
+    </form>
+</div>
 {% endblock %}
