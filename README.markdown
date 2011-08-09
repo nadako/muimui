@@ -1,5 +1,5 @@
 This is minimal MongoDB database editing web application I created for personal use when developing
-projects using MongoDB.
+projects using MongoDB. It uses [Flask](http://flask.pocoo.org/) web mini-framework.
 
 It allows to list and drop databases and collections, add and edit documents.
 
