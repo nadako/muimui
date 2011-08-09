@@ -1,5 +1,7 @@
-This is minimal MongoDB database editing web application I created for personal use when developing
-projects using MongoDB. It uses [Flask](http://flask.pocoo.org/) web mini-framework.
+# muimui - minimal MongoDB editing app
+
+This is minimal [MongoDB](http://www.mongodb.org/) database editing web application I created for personal use when
+developing projects. It uses [Flask](http://flask.pocoo.org/) web mini-framework.
 
 It allows to list and drop databases and collections, add and edit documents.
 
