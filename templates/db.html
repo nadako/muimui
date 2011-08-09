@@ -3,13 +3,21 @@
 <h1>
     <a href="{{ url_for('.index') }}">root</a>/{{ db_name }}
 </h1>
-<ul>
+
+<table>
+    <tr>
+        <th>name</th>
+        <th>actions</th>
+    </tr>
     {% for coll in colls|sort %}
-    <li>
-        <a href="{{ url_for('.collection', db_name=db_name, coll_name=coll) }}">{{ coll }}</a>
-    </li>
+    <tr>
+        <td><a href="{{ url_for('.collection', db_name=db_name, coll_name=coll) }}">{{ coll }}</a></td>
+        <td><a href="{{ url_for('.drop_collection', db_name=db_name, coll_name=coll) }}">drop</a></td>
+    </tr>
     {% else %}
-    <li>No collections.</li>
+    <tr>
+        <td colspan="2">No collections.</td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 {% endblock %}

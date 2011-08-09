@@ -113,4 +113,13 @@ def delete(db_name, coll_name, id):
 
     return render_template('delete.html', value=tojson(row), db_name=db_name, coll_name=coll_name, id=id)
 
+@app.route('/<db_name>/<coll_name>/drop', methods=['GET', 'POST'])
+def drop_collection(db_name, coll_name):
+    coll = getcoll_or_404(db_name, coll_name)
+    if request.method == 'POST':
+        if 'delete' in request.form:
+            coll.drop()
+        return redirect(url_for('.database', db_name=db_name))
+    return render_template('drop_collection.html', db_name=db_name, coll_name=coll_name)
+
 app.run(debug=True)
