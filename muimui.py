@@ -52,7 +52,7 @@ def index():
 @app.route('/<db_name>')
 def database(db_name):
     db = getdb_or_404(db_name)
-    colls = [n for n in db.collection_names() if not n.startswith('system.')]
+    colls = [(n, db[n].count()) for n in db.collection_names() if not n.startswith('system.')]
     return render_template('db.html', db_name=db_name, colls=colls)
 
 @app.route('/drop_database/<db_name>', methods=['GET', 'POST'])

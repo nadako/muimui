@@ -7,16 +7,18 @@
 <table>
     <tr>
         <th>name</th>
+        <th>count</th>
         <th>actions</th>
     </tr>
-    {% for coll in colls|sort %}
+    {% for coll, count in colls|sort %}
     <tr>
         <td><a href="{{ url_for('.collection', db_name=db_name, coll_name=coll) }}">{{ coll }}</a></td>
+        <td>{{ count }}</td>
         <td><a href="{{ url_for('.drop_collection', db_name=db_name, coll_name=coll) }}">drop</a></td>
     </tr>
     {% else %}
     <tr>
-        <td colspan="2">No collections.</td>
+        <td colspan="3">No collections.</td>
     </tr>
     {% endfor %}
 </table>
