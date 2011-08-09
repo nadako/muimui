@@ -1,4 +1,23 @@
 {% extends 'layout.html' %}
+{% block head %}
+<script type="text/javascript" src="{{ url_for('static', filename='jquery-1.6.2.min.js') }}"></script>
+<script type="text/javascript">
+$(function() {
+    $('.list-object-expand a').click(function() {
+        var $this = $(this);
+        var object = $this.parent().next();
+
+        object.toggleClass('collapsed');
+        if (object.is('.collapsed'))
+            $this.text('expand');
+        else
+            $this.text('collapse');
+
+        return false;
+    });
+});
+</script>
+{% endblock %}
 {% block body %}
 <h1>
     <a href="{{ url_for('.index') }}">root</a>/<a href="{{ url_for('.database', db_name=db_name) }}">{{ db_name }}</a>/{{ coll_name }}
@@ -18,7 +37,10 @@
     {% for object in objects %}
     <tr>
         <th>{{ object._id }}</th>
-        <td><pre>{{ object|tojson }}</pre></td>
+        <td>
+            <div class="list-object-expand"><a href="#">expand</a></div>
+            <pre class="list-object collapsed">{{ object|tojson }}</pre>
+        </td>
         <td>
             <a href="{{ url_for('.edit', db_name=db_name, coll_name=coll_name, id=object._id|tojson) }}">edit</a>
             |

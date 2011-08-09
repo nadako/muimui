@@ -3,6 +3,7 @@
 <head>
     <title>muimui</title>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+    {% block head %}{% endblock %}
 </head>
 <body>
 {% block body %}{% endblock %}

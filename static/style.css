@@ -19,3 +19,21 @@ a
 {
     color: blue;
 }
+
+.list-object-expand
+{
+    text-align: right;
+}
+
+.list-object-expand a
+{
+    font-size: smaller;
+    color: silver;
+}
+
+.list-object.collapsed
+{
+    max-height: 10em;
+    overflow: hidden;
+    border-bottom: 1px solid silver;
+}
