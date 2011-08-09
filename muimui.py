@@ -33,7 +33,7 @@ def index():
 @app.route('/<db_name>')
 def database(db_name):
     db = getdb_or_404(db_name)
-    colls = db.collection_names()
+    colls = [n for n in db.collection_names() if not n.startswith('system.')]
     return render_template('db.html', db_name=db_name, colls=colls)
 
 @app.route('/<db_name>/<coll_name>')
