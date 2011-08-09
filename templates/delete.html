@@ -6,12 +6,12 @@
 
 <h2>Delete?</h2>
 
-<pre>{{ value }}</pre>
-
 <div>
     <form action="" method="post">
         <input type="submit" value="Yes" name="delete">
         <input type="submit" value="No">
     </form>
 </div>
+
+<pre class="list-object">{{ render_object(value) }}</pre>
 {% endblock %}

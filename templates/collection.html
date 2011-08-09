@@ -39,7 +39,7 @@ $(function() {
         <th>{{ object._id }}</th>
         <td>
             <div class="list-object-expand"><a href="#">expand</a></div>
-            <pre class="list-object collapsed">{{ object|tojson }}</pre>
+            <pre class="list-object collapsed">{{ render_object(object) }}</pre>
         </td>
         <td>
             <a href="{{ url_for('.edit', db_name=db_name, coll_name=coll_name, id=object._id|tojson) }}">edit</a>
