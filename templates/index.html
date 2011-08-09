@@ -6,6 +6,8 @@
     <li>
         <a href="{{ url_for('.database', db_name=db) }}">{{ db }}</a>
     </li>
+    {% else %}
+    <li>No databases</li>
     {% endfor %}
 </ul>
 {% endblock %}

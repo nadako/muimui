@@ -8,6 +8,8 @@
     <li>
         <a href="{{ url_for('.collection', db_name=db_name, coll_name=coll) }}">{{ coll }}</a>
     </li>
+    {% else %}
+    <li>No collections.</li>
     {% endfor %}
 </ul>
 {% endblock %}
