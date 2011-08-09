@@ -65,7 +65,7 @@ def add(db_name, coll_name):
     else:
         value = u''
 
-    return render_template('edit.html', value=value, error=error, db_name=db_name, coll_name=coll_name)
+    return render_template('edit.html', value=value, error=error, db_name=db_name, coll_name=coll_name, id='new')
 
 @app.route('/<db_name>/<coll_name>/edit/<id>', methods=['GET', 'POST'])
 def edit(db_name, coll_name, id):
