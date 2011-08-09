@@ -3,6 +3,11 @@ body
     font: 11pt sans-serif;
 }
 
+pre
+{
+    font-family: Andale Mono, monospace;
+}
+
 table
 {
     border-collapse: collapse;
