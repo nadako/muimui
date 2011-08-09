@@ -36,6 +36,15 @@ def database(db_name):
     colls = [n for n in db.collection_names() if not n.startswith('system.')]
     return render_template('db.html', db_name=db_name, colls=colls)
 
+@app.route('/drop_database/<db_name>', methods=['GET', 'POST'])
+def drop_database(db_name):
+    db = getdb_or_404(db_name)
+    if request.method == 'POST':
+        if 'delete' in request.form:
+            db.connection.drop_database(db)
+        return redirect(url_for('.index'))
+    return render_template('drop_database.html', db_name=db_name)
+
 @app.route('/<db_name>/<coll_name>')
 def collection(db_name, coll_name):
     coll = getcoll_or_404(db_name, coll_name)

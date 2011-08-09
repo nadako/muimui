@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>
+    <a href="{{ url_for('.index') }}">root</a>/{{ db_name }}
+</h1>
+
+<h2>Drop database: {{ db_name }}?</h2>
+
+<div>
+    <form action="" method="post">
+        <input type="submit" value="Yes" name="delete">
+        <input type="submit" value="No">
+    </form>
+</div>
+{% endblock %}

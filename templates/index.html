@@ -1,13 +1,18 @@
 {% extends 'layout.html' %}
 {% block body %}
 <h1>root/</h1>
-<ul>
+<table>
+    <tr>
+        <th>name</th>
+        <th>actions</th>
+    </tr>
     {% for db in dbs|sort %}
-    <li>
-        <a href="{{ url_for('.database', db_name=db) }}">{{ db }}</a>
-    </li>
+    <tr>
+        <td><a href="{{ url_for('.database', db_name=db) }}">{{ db }}</a></td>
+        <td><a href="{{ url_for('.drop_database', db_name=db) }}">drop</a></td>
+    </tr>
     {% else %}
-    <li>No databases</li>
+    <tr><td colspan="2">No databases</td></tr>
     {% endfor %}
-</ul>
+</table>
 {% endblock %}
