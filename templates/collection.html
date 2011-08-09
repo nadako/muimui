@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>{{ collection }}</h1>
+
+<p>
+    <a href="{{ url_for('.add', name=collection) }}">add</a>
+    <a href="{{ url_for('.index') }}">index</a>
+</p>
+
+<table>
+    {% for object in objects %}
+    <tr>
+        <th>{{ object._id }}</th>
+        <td><pre>{{ object|tojson }}</pre></td>
+        <td>
+            <a href="{{ url_for('.edit', name=collection, id=object._id|tojson) }}">edit</a>
+            |
+            <a href="{{ url_for('.delete', name=collection, id=object._id|tojson) }}">delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

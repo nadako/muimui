@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>{{ collection }}</h1>
+
+<p><a href="{{ url_for('.collection', name=collection) }}">index</a></p>
+
+<form action="" method="post">
+    Delete?
+    <div>
+        <pre>{{ value }}</pre>
+    </div>
+    <div>
+        <input type="submit" value="Yes" name="delete">
+        <input type="submit" value="No">
+    </div>
+</form>
+{% endblock %}

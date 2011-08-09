@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>Collections</h1>
+<ul>
+    {% for collection in collections|sort %}
+    <li>
+        <a href="{{ url_for('.collection', name=collection) }}">{{ collection }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

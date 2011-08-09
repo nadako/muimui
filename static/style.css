@@ -1,0 +1,21 @@
+body
+{
+    font: 11pt sans-serif;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+td, th
+{
+    border: 1px solid gray;
+    vertical-align: top;
+    padding: 0.5em 1em;
+}
+
+a
+{
+    color: blue;
+}
