@@ -1,6 +1,5 @@
 from bson import json_util
 from flask import Flask, request, render_template, json, redirect, url_for, abort
-from markupsafe import Markup
 from pymongo.errors import OperationFailure
 from pymongo.connection import Connection
 
@@ -11,23 +10,6 @@ def tojson(v):
 
 def fromjson(v):
     return json.loads(v, object_hook=json_util.object_hook)
-
-try:
-    import pygments
-except ImportError:
-    def render_object(v):
-        return Markup.escape(tojson(v))
-else:
-    from pygments import highlight
-    from pygments.lexers.web import JavascriptLexer
-    from pygments.formatters.html import HtmlFormatter
-
-    lexer = JavascriptLexer()
-    formatter = HtmlFormatter(nowrap=True)
-
-    def render_object(v):
-        return Markup(highlight(tojson(v), lexer, formatter))
-
 
 def getdb_or_404(db_name):
     if db_name not in conn.database_names():
@@ -42,7 +24,6 @@ def getcoll_or_404(db_name, coll_name):
 
 app = Flask(__name__)
 app.jinja_env.filters['tojson'] = tojson
-app.jinja_env.globals['render_object'] = render_object
 
 @app.route('/')
 def index():
