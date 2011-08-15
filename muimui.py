@@ -131,4 +131,22 @@ def drop_collection(db_name, coll_name):
         return redirect(url_for('.database', db_name=db_name))
     return render_template('drop_collection.html', db_name=db_name, coll_name=coll_name)
 
+@app.route('/<db_name>/$create_collection', methods=['GET', 'POST'])
+def create_collection(db_name):
+    db = getdb_or_404(db_name)
+    error = None
+    value = u''
+    if request.method == 'POST' and 'name' in request.form:
+        value = request.form['name'].strip()
+        if not value:
+            error = u'Name is required'
+        else:
+            try:
+                db.create_collection(value)
+            except Exception as e:
+                error = unicode(e)
+            else:
+                return redirect(url_for('.database', db_name=db_name))
+    return render_template('create_collection.html', db_name=db_name, error=error, value=value)
+
 app.run(debug=True)

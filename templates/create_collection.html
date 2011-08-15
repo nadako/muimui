@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1>
+    <a href="{{ url_for('.index') }}">root</a>/<a href="{{ url_for('.database', db_name=db_name) }}">{{ db_name }}</a>/create collection
+</h1>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<form action="" method="post">
+    <div>
+        <input type="text" name="name" value="{{ value }}">
+    </div>
+    <div>
+        <input type="submit" value="Create">
+    </div>
+</form>
+{% endblock %}
